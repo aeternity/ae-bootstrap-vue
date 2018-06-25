@@ -5742,10 +5742,6 @@ vue@^2.2.4:
   version "2.5.16"
   resolved "https://registry.yarnpkg.com/vue/-/vue-2.5.16.tgz#07edb75e8412aaeed871ebafa99f4672584a0085"
 
-vuex-loading@^0.2.2:
-  version "0.2.6"
-  resolved "https://registry.yarnpkg.com/vuex-loading/-/vuex-loading-0.2.6.tgz#8e77bc28ad786c62fbb0ca595900db2ae2c9e510"
-
 vuex-persistedstate@^2.5.0:
   version "2.5.4"
   resolved "https://registry.yarnpkg.com/vuex-persistedstate/-/vuex-persistedstate-2.5.4.tgz#a19710ad7f9a08cea4e65fc585924d9fdac7384a"
