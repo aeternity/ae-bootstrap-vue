@@ -108,7 +108,16 @@ module.exports = {
 
       // (with more entries, this ensures that no other module
       //  goes into the vendor chunk)
-      minChunks: Infinity
+      minChunks: function(module){
+        // This prevents stylesheet resources with the .css or .scss extension
+        // from being moved from their original chunk to the vendor chunk
+        if(module.resource && (/^.*\.(css|scss)$/).test(module.resource)) {
+          return false;
+        }
+
+        // split the vendor specific modules
+        return module.context && module.context.includes('node_modules');
+      }
     })
   ],
   resolve: {
@@ -137,9 +146,7 @@ module.exports = {
     ],
     proxy: {}
   },
-  performance: {
-    hints: false
-  },
+  performance: { hints: false },
   devtool: 'source-map'
 };
 
