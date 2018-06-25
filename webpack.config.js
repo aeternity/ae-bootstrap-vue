@@ -11,8 +11,7 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
  */
 module.exports = {
   entry: {
-    bundle: './index.js',
-    vendor: []
+    bundle: './index.js'
   },
   output: {
     chunkFilename: '[name]-[hash]-chunk.js',
