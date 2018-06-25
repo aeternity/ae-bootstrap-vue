@@ -1,0 +1,12 @@
+# Development Files
+.babelrc
+.eslintrc
+package.json
+webpack.config.js
+
+# App Files
+/index.js
+
+# Folders
+/build
+/node_modules

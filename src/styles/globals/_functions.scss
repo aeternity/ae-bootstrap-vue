@@ -1,0 +1,34 @@
+//------------------------------
+// *****************************
+// Functions
+// *****************************
+//------------------------------
+
+/// Pixels to em
+/// @access private
+/// @param {String} $px - amount of Pixels.
+@function em($px) {
+  @return #{$px / $base-font-size}em;
+}
+
+/// Pixels to REM
+/// @access private
+/// @param {String} $px - amount of Pixels.
+@function rem($px) {
+  @return #{$px / $base-font-size}rem;
+}
+
+/// Function helper to strip a single character from a string; by default, simply removes the character.
+/// @access private
+/// @param {String} $string - The string to alter.
+/// @param {String} $to-replace - The character to check for.
+/// @param {String} $replacement [''] - The character to replace the removed character with.
+@function str-replace($string, $to-replace, $replacement:'') {
+  $target-location: str-index($string, $to-replace);
+  @if $target-location == null {
+    @return $string;
+  }
+  $string-without-target: str-slice($string, 1, $target-location - 1) + str-slice($string, $target-location + 1);
+  $string: str-insert($string-without-target, $replacement, $target-location);
+  @return $string;
+}

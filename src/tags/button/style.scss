@@ -1,0 +1,48 @@
+//------------------------------
+// *****************************
+// Tag Button
+// *****************************
+//------------------------------
+
+.tag-button {
+  @include user-select;
+
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  background: $color-gray;
+  font-family: $font-lato;
+  font-weight: bold;
+  font-size: rem(14px);
+  color: $color-white;
+  text-decoration: none;
+  height: 36px;
+  line-height: normal;
+  padding: 0 20px;
+  border-radius: 100px;
+  text-align: center;
+  vertical-align: middle;
+  cursor: pointer;
+
+  &:hover,
+  &:focus {
+    text-decoration: none;
+  }
+}
+
+.tag-button.primary {
+  background: $color-gray-light;
+}
+
+.tag-button.expand {
+  display: block;
+  padding-left: 0;
+  padding-right: 0;
+  width: 100%;
+}
+
+.tag-button.auto {
+  width: auto;
+  padding: 0;
+}
