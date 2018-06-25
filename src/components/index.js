@@ -9,8 +9,8 @@ export const install = function (Vue, options) {
     /*
      * Internal components
      */
-    'tag-button': () => import(/* webpackChunkName: "tag-button" */'./button/index.vue'),
-    'tag-button-link': () => import(/* webpackChunkName: "tag-button" */'./button/link/index.vue')
+    'button': () => import(/* webpackChunkName: "tag-button" */'./button/index.vue'),
+    'button-link': () => import(/* webpackChunkName: "tag-button" */'./button/link/index.vue')
   };
 
   /**

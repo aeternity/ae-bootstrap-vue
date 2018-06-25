@@ -5,7 +5,7 @@ export default {
   /*
    * Component Name
    */
-  name: 'tag-button',
+  name: 'button-link',
 
   /*
    * Component Props
@@ -14,5 +14,6 @@ export default {
     primary: Boolean,
     expand: Boolean,
     auto: Boolean,
+    to: [String, Object]
   }
 };

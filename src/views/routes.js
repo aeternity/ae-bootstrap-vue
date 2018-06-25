@@ -40,7 +40,7 @@ export default [
      * Route redirect
      */
     redirect: {
-      name: 'example/primary'
+      name: 'view-example/primary'
     },
 
     /*

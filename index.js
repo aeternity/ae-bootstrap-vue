@@ -32,7 +32,7 @@ import { router } from '@/index';
 /**
  * Vue Application custom Tags
  */
-import * as tags from '@/tags';
+import * as components from '@/components';
 
 /**
  * Vue Application custom Tags
@@ -40,19 +40,14 @@ import * as tags from '@/tags';
 import * as sections from '@/sections';
 
 /**
- * Import Tag
+ * Import components
  */
-Vue.use(tags);
+Vue.use(components);
 
 /**
- * Import Units
+ * Import sections
  */
 Vue.use(sections);
-
-/**
- * Subscribes to the store
- */
-store.subscribe((mutation) => {});
 
 /**
  * New Vue Instance
