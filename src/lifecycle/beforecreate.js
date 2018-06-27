@@ -2,7 +2,7 @@
  * Exporting Lifecycle
  * @return {Promise<T>}
  */
-export default function () {
+export default function() {
   /**
    * Check if the user is actually loggedin
    * and propagate/update the state with user details

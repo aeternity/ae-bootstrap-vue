@@ -108,7 +108,7 @@ module.exports = {
 
       // (with more entries, this ensures that no other module
       //  goes into the vendor chunk)
-      minChunks: function(module){
+      minChunks: function(module) {
         // This prevents stylesheet resources with the .css or .scss extension
         // from being moved from their original chunk to the vendor chunk
         if(module.resource && (/^.*\.(css|scss)$/).test(module.resource)) {

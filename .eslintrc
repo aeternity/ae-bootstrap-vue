@@ -1,5 +1,12 @@
 {
-  "extends": ["eslint:recommended", "google", "plugin:vue/recommended"],
+  "parser": "vue-eslint-parser",
+  "extends": [
+    "eslint:recommended",
+    "plugin:vue/recommended"
+  ],
+  "plugins": [
+    "vue"
+  ],
   "env": {
     "browser": true,
     "es6": true,
@@ -40,8 +47,9 @@
     "comma-dangle": "off",
     "key-spacing": "off",
     "object-curly-spacing": "off",
-    "space-before-function-paren": "off",
+    "space-before-function-paren": "warn",
     "valid-jsdoc": "warn",
+    "no-extra-semi": "error",
     "no-console": "warn",
     "no-unused-vars": "warn",
     "no-invalid-this": "warn",

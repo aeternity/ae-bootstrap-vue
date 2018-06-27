@@ -1,7 +1,7 @@
 /**
  * Exporting Tags
  */
-export const install = function (Vue, options) {
+export const install = function(Vue, options) {
   /**
    * Tag List
    */

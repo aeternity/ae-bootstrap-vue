@@ -1,4 +1,4 @@
-# AE bootstrap-vue
+# ae-boilerplate-vue
 
 ---
 description here...
@@ -18,7 +18,14 @@ yarn
   - `pre-push` - execute tests before push
 * `public/` - Server accessible assets (not related with the app/components itself)
 * `src/` - Application source code.
-  - `folder/` - desc
+  - `components/` - local components
+  - `directives/` - vue directives
+  - `filters/` - vue filters
+  - `lifecycle/` - root vue lifecycle (beforeCreate, mounted, destroyed, etc)
+  - `sections/` - stateful components that are part of views
+  - `store/` - vuex store 
+  - `styles/` - global styles
+  - `views/` - application views
 * `test/` - Test files
 
 ## NPM RUN Scripts
@@ -47,12 +54,13 @@ _Note: tests and lints will run when attempting to push to a remote branch._
 ```json
 {
   "dependencies": {
+    "@aeternity/aepp-components": "^2.0.11",
+    "@aeternity/aepp-sdk": "^0.15.0-0.1.0",
     "normalize-scss": "^7.0.0",
     "susy": "^2.2.12",
     "vue": "^2.2.4",
     "vue-router": "^3.0.1",
     "vuex": "^3.0.1",
-    "vuex-loading": "^0.2.2",
     "vuex-persistedstate": "^2.5.0",
     "vuex-router-sync": "^5.0.0"
   }

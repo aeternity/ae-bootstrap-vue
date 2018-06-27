@@ -2,6 +2,7 @@
  * Vue
  */
 import Vue from 'vue';
+import AeppComponents from '@aeternity/aepp-components';
 import VueRouter from 'vue-router';
 import { sync } from 'vuex-router-sync';
 
@@ -18,6 +19,7 @@ import routes from '@/views/routes';
 /**
  * Installing Vue Plugins
  */
+Vue.use(AeppComponents);
 Vue.use(VueRouter);
 
 /**
