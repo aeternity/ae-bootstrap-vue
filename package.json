@@ -19,7 +19,6 @@
     "@aeternity/aepp-components": "^2.0.11",
     "@aeternity/aepp-sdk": "^0.15.0-0.1.0",
     "normalize-scss": "^7.0.0",
-    "susy": "^2.2.12",
     "vue": "^2.2.4",
     "vue-router": "^3.0.1",
     "vuex": "^3.0.1",

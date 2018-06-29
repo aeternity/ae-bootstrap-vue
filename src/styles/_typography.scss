@@ -40,10 +40,9 @@ p {
 }
 
 a {
-  @include transition($base-transition-time);
-
   text-decoration: none;
   color: $color-black;
+  transition: $base-transition-time;
 
   &:hover,
   &:focus {

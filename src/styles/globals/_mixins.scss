@@ -4,6 +4,14 @@
 // *****************************
 //------------------------------
 
+/// Disable user Select
+@mixin user-select {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
 /// Placeholder Color
 /// @param {Hex} $color - Placeholder Color
 @mixin placeholder-color($color) {
@@ -21,28 +29,6 @@
   }
 }
 
-/// Disable user Select
-@mixin user-select {
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-}
-
-/// Mixin helper to output vendor-prefixed CSS
-/// @access private
-/// @author HugoGiraudel
-/// @param {String} $property - Unprefixed CSS property
-/// @param {*} $value - Raw CSS value
-/// @param {List} $prefixes [()] - List of prefixes to output
-@mixin prefix($property, $value, $prefixes: ()) {
-  @each $prefix in $prefixes {
-    -#{$prefix}-#{$property}: $value;
-  }
-
-  #{$property}: $value;
-}
-
 /// Mixin helper to prefix `@keyframes`
 /// @access private
 /// @param {String} $name - Animation name
@@ -54,24 +40,6 @@
   @keyframes #{$name} {
     @content;
   }
-}
-
-/// Background size helper
-/// @access public
-/// @param {Length} $width - Background width
-/// @param {Length} $height [$width] - Background height
-/// @example scss - Usage
-///   .foo {
-///     @include background-size(100%);
-///   }
-/// @example scss - Result
-///   .foo {
-///     -webkit-background-size: 100% 100%;
-///     -moz-background-size: 100% 100%;
-///     background-size: 100% 100%;
-///   }
-@mixin background-size($width, $height: $width) {
-  @include prefix(background-size, $width $height, 'webkit' 'moz');
 }
 
 /// Separated border-radius helpers
@@ -100,26 +68,10 @@
 ///     border-bottom-left-radius: 4px;
 ///   }
 @mixin border-radius-separate($top-left-radius, $top-right-radius, $bottom-right-radius, $bottom-left-radius) {
-  @include prefix(border-top-left-radius, $top-left-radius, 'webkit' 'moz');
-  @include prefix(border-top-right-radius, $top-right-radius, 'webkit' 'moz');
-  @include prefix(border-bottom-right-radius, $bottom-right-radius, 'webkit' 'moz');
-  @include prefix(border-bottom-left-radius, $bottom-left-radius, 'webkit' 'moz');
-}
-
-/// Box-sizing helper
-/// @access public
-/// @param {String} $type - Either `border-box`, `padding-box` or `content-box`
-/// @example scss - Usage
-///   .foo {
-///     @include box-sizing(border-box);
-///   }
-/// @example css - Result
-///   .foo {
-///     -moz-box-sizing: border-box;
-///     box-sizing: border-box;
-///   }
-@mixin box-sizing($type) {
-  @include prefix(box-sizing, $type, 'moz');
+  border-top-left-radius: $top-left-radius;
+  border-top-right-radius: $top-right-radius;
+  border-bottom-right-radius: $bottom-right-radius;
+  border-bottom-left-radius: $bottom-left-radius;
 }
 
 /// Horizontally centers block elements
@@ -160,7 +112,7 @@
   position: absolute;
   top: 50%;
   left: 50%;
-  @include prefix(transform, translate(-50%, -50%), 'webkit' 'ms');
+  transform: translate(-50%, -50%);
 }
 
 /// Vertically centers block elements with known height.
@@ -201,7 +153,7 @@
 @mixin center-h--unk {
   position: relative;
   top: 50%;
-  @include prefix(transform, translateY(-50%), 'webkit' 'ms');
+  transform: translateY(-50%);
 }
 
 /// Clearfix extend
@@ -240,19 +192,18 @@
 /// Given the location of a webfont, will generate a font-face declaration with multiple file formats.
 /// @access public
 /// @param {String} $font-name - Font family name
-/// @param {String} $file-name - File name (no extension)
+/// @param {String} $file-path - File name (no extension)
 /// @param {String | Number} $weight [normal] - Font weight
 /// @param {String} $style [normal] - Font style
 /// @example scss - Usage
 ///   @include font-face('gotham', '/fonts/gotham');
-@mixin font-face($file-path, $file-name, $weight: normal, $style: normal) {
+@mixin font-face($font-name, $file-path, $weight: 400, $style: normal, $extra: "") {
   @font-face {
-    font-family: quote($file-name);
-    src: url($file-path + $file-name + '.woff') format('woff'),
-    url($file-path + $file-name + '.ttf') format('truetype'),
-    url($file-path + $file-name + '.svg##{$file-name}') format('svg');
-    font-weight: $weight;
+    font-family: quote($font-name);
+    src: url($file-path + ".woff2" + $extra) format("woff2"),
+    url($file-path + ".woff" + $extra) format("woff");
     font-style: $style;
+    font-weight: $weight;
   }
 }
 
@@ -290,7 +241,7 @@
 ///     transform: translate3d(0, 0, 0);
 ///   }
 @mixin ha {
-  @include prefix(transform, translate3d(0, 0, 0), 'webkit' 'ms');
+  transform: translate3d(0, 0, 0);
 }
 
 /// Retina image media query helper; given an image path with a 2x-sized version of an image, will load that image as a background-image on high-resolution devices.
@@ -427,39 +378,6 @@
 ///   }
 @mixin text-shadow($value) {
   text-shadow: rgba(255, 255, 255, $value) 0 1px 0;
-}
-
-/// Automatically prefix any transform
-/// @access public
-/// @param {String} $transformation - The transform to apply
-/// @example scss - Usage
-///   .foo {
-///     @include transform(translateX(10px));
-///   }
-/// @example css - Result
-///   .foo {
-///     -webkit-transform: translateX(10px);
-///     -ms-transform: translateX(10px);
-///     transform: translateX(10px);
-///   }
-@mixin transform($transformation) {
-  @include prefix(transform, $transformation, 'webkit' 'ms');
-}
-
-/// Transition helper
-/// @param {Time} $time [1s] - Duration
-/// @param {String} $timing-function [ease-in-out] - Timing function or cubic bezier curve
-/// @example scss - Usage
-///   .foo {
-///     @include transition(0.3s, ease-in);
-///   }
-/// @example css - Result
-///   .foo {
-///     -webkit-transition: all 0.3s ease-in;
-///     transition: all 0.3s ease-in;
-///   }
-@mixin transition($time: 1s, $property: all, $timing-function: ease-in-out) {
-  @include prefix(transition, $property $time $timing-function, 'webkit');
 }
 
 /// Horizontal gradient, from left to right
